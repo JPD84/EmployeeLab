@@ -46,8 +46,7 @@ public class Employee {
     private Department department;
 
 
-    public Employee(Long id, String firstName, String lastName, int employeeNo, Department department) {
-        this.id = id;
+    public Employee(String firstName, String lastName, int employeeNo, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeNo = employeeNo;

@@ -30,13 +30,17 @@ public class Project {
                     name = "project_id",
                     nullable = false,
                     updatable = false)
+            },
+            inverseJoinColumns = {@JoinColumn(
+                    name = "employee_id",
+                    nullable = false,
+                    updatable = false)
             }
     )
 
     private List<Employee> employees;
 
-    public Project(Long id, String name, int projectDuration) {
-        this.id = id;
+    public Project(String name, int projectDuration) {
         this.name = name;
         this.projectDuration = projectDuration;
         this.employees = new ArrayList<Employee>();

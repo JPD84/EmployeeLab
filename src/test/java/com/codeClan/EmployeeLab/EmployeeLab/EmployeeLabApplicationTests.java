@@ -31,10 +31,10 @@ public class EmployeeLabApplicationTests {
 
 	@Test
 	public void canSetupEmployeeDepartmentProject(){
-		Employee employee = new Employee("Clark", "Kent", 7632);
-		employeeRepository.save(employee);
 		Department department = new Department("SuperConductorsDept");
 		departmentRepository.save(department);
+		Employee employee = new Employee("Clark", "Kent", 7632, department);
+		employeeRepository.save(employee);
 		Project project = new Project("New semiConductor", 45);
 		projectRepository.save(project);
 		employee.addProject(project);
