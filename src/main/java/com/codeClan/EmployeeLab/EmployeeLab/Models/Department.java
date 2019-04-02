@@ -1,6 +1,10 @@
 package com.codeClan.EmployeeLab.EmployeeLab.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Departments")
@@ -11,12 +15,20 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @Column(name = "name")
     private String name;
+
+
+    @JsonIgnoreProperties("department")
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
 
 
     public Department(Long id, String name) {
         this.id = id;
         this.name = name;
+        this.employees = new ArrayList<Employee>();
     }
 
     public Department() {
@@ -36,5 +48,13 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }
